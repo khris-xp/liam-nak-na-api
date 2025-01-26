@@ -76,6 +76,9 @@ func validateAndConvertInput(req triangleRequest) (domain.Triangle, error) {
 	}, nil
 }
 
+//TODO: Teetouch Jaknamon ทำต่อจากนี้
+//TODO: Check Triangle Validate Input Word format in Thai
+
 func validateAndParseFloat(input string) (float64, error) {
 	if input == "" {
 		return 0, errors.New("missing required field")
