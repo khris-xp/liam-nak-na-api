@@ -1,15 +1,19 @@
 package main
 
 import (
-	"net/http"
+	"liam-nak-na-api/internal/application"
+	"liam-nak-na-api/internal/ports/http"
 
 	"github.com/labstack/echo/v4"
 )
 
 func main() {
+	triangleService := application.NewTriangleService()
+	triangleHandler := http.NewTriangleHandler(triangleService)
+
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
+
+	e.POST("/triangle", triangleHandler.ClassifyTriangle)
+
 	e.Logger.Fatal(e.Start(":8081"))
 }
