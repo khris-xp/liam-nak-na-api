@@ -81,16 +81,16 @@ func validateAndConvertInput(req triangleRequest) (domain.Triangle, error) {
 
 func validateAndParseFloat(input string) (float64, error) {
 	if input == "" {
-		return 0, errors.New("missing required field")
+		return 0, errors.New("Please fill out this field.")
 	}
 
 	num, err := strconv.ParseFloat(input, 64)
 	if err != nil {
-		return 0, errors.New("invalid number format")
+		return 0, errors.New("Invalid inputs : Enter a number between 0-999999.")
 	}
 
 	if num < 0 || num > 999999 {
-		return 0, errors.New("number must be between 0 and 999999")
+		return 0, errors.New("Invalid inputs : Enter a number between 0-999999.")
 	}
 
 	return num, nil
