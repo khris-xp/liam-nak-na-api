@@ -84,6 +84,11 @@ func validateAndParseFloat(input string) (float64, error) {
 		return 0, errors.New("Please fill out this field.")
 	}
 
+	parts := strings.Split(input, ".")
+	if len(parts) > 1 && len(parts[1]) > 3 {
+		return 0, errors.New("Invalid inputs : Enter a number between 0-999999.")
+	}
+	
 	num, err := strconv.ParseFloat(input, 64)
 	if err != nil {
 		return 0, errors.New("Invalid inputs : Enter a number between 0-999999.")
